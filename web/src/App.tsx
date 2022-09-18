@@ -1,15 +1,14 @@
+import "keen-slider/keen-slider.min.css"
+
 import * as Dialog from "@radix-ui/react-dialog"
 
-import { GameBanner } from "./components/GameBanner"
+import { GameSlider } from "./components/GameSlider"
 import { CreateAdDialog } from "./components/CreateAdDialog"
 import { CreateAdBanner } from "./components/CreateAdBanner"
 
 import logoImg from "./assets/logo.svg"
-import { useGame } from "./contexts/GameContext"
 
 function App() {
-  const { games } = useGame()
-
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center m-20">
       <img src={logoImg} alt="" />
@@ -22,16 +21,7 @@ function App() {
         está aqui.
       </h1>
 
-      <div className="grid grid-cols-6 gap-6 mt-16">
-        {games?.map(game => (
-          <GameBanner
-            key={game.id}
-            title={game.title}
-            bannerUrl={game.bannerUrl}
-            adsCount={game._count.ads}
-          />
-        ))}
-      </div>
+      <GameSlider />
 
       <Dialog.Root>
         <CreateAdBanner />
